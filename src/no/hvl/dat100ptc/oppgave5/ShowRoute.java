@@ -57,11 +57,12 @@ public class ShowRoute extends EasyGraphics {
 	
 		double ystep;
 		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		double maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
+		double minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
 
-		// TODO - SLUTT
+		ystep = MAPXSIZE / (Math.abs(maxlat - minlat)); 
+
+		return ystep;
 		
 	}
 
@@ -69,8 +70,14 @@ public class ShowRoute extends EasyGraphics {
 
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
 		
+		int j = 0;
+		for(int i = 0; i < gpspoints.length; i++);
+			j += 2;
+			setColor(0,255,0);
+			fillCircle((int) GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints)) + j, (int) GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints)) + j, 5);
+			setColor(0,0,255);
+			drawLine((int) GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints)), (int) GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints)), (int) GPSUtils.findMax(GPSUtils.getLongitudes(gpspoints)), (int) GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints)));
 		// TODO - SLUTT
 	}
 
@@ -83,7 +90,7 @@ public class ShowRoute extends EasyGraphics {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		
 		
 		// TODO - SLUTT;
 	}
@@ -92,7 +99,7 @@ public class ShowRoute extends EasyGraphics {
 
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		
 		
 		// TODO - SLUTT
 	}

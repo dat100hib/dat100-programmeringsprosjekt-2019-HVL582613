@@ -9,52 +9,46 @@ public class GPSData {
 	protected int antall = 0;
 
 	public GPSData(int n) {
+		//Opprette ny tabell 
+		gpspoints = new GPSPoint[n];
 
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.construtor("GPSData"));
-
-		// TODO - SLUTT
 	}
 
 	public GPSPoint[] getGPSPoints() {
 		return this.gpspoints;
 	}
-	
-	protected boolean insertGPS(GPSPoint gpspoint) {
 
+	protected boolean insertGPS(GPSPoint gpspoint) {
+			// Sette inn gps punkt i tabell om det er plass i tabell(antall < gpspoints.length)
 		boolean inserted = false;
 
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		if (antall < gpspoints.length) {
+			gpspoints[antall] = gpspoint;
+			antall++;
+			inserted = true;
+		}
+		return inserted;
 	}
 
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
-
+		// Konverterer data i ein streng til tall og oppretter et nytt gps punkt
 		GPSPoint gpspoint;
+		gpspoint = GPSDataConverter.convert(time, latitude, longitude, elevation);
+		boolean a = insertGPS(gpspoint);
 
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return a;
 
-		// TODO - SLUTT
-		
 	}
 
 	public void print() {
-
+		// Skriver ut gps data fra gpspoints tabellen. 
 		System.out.println("====== Konvertert GPS Data - START ======");
 
-		// TODO - START
+		for (int i = 0; i < antall; i++) {
+			System.out.println(gpspoints.toString());
+		}
 
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
-		
-		// System.out.println("====== Konvertert GPS Data - SLUTT ======");
+		System.out.println("====== Konvertert GPS Data - SLUTT ======");
 
 	}
 }
